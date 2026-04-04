@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+
+
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 160 20% 97%;
+    --foreground: 210 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 30% 15%;
+
+    --primary: 168 60% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 40% 92%;
+    --secondary-foreground: 270 40% 30%;
+
+    --muted: 160 15% 93%;
+    --muted-foreground: 210 10% 50%;
+
+    --accent: 270 50% 85%;
+    --accent-foreground: 270 50% 25%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 15% 88%;
+    --input: 160 15% 88%;
+    --ring: 168 60% 40%;
+
+    --radius: 0.75rem;
+
+    --butterfly-teal: 168 60% 50%;
+    --butterfly-lavender: 270 50% 70%;
+    --butterfly-gold: 40 80% 55%;
+    --butterfly-pink: 320 50% 70%;
+
+    --income: 145 60% 42%;
+    --income-foreground: 0 0% 100%;
+    --expense: 0 72% 55%;
+    --expense-foreground: 0 0% 100%;
+
+    --chart-1: 168 60% 40%;
+    --chart-2: 270 50% 60%;
+    --chart-3: 40 80% 55%;
+    --chart-4: 320 50% 65%;
+    --chart-5: 200 70% 50%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 168 55% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 30% 20%;
+    --secondary-foreground: 270 30% 80%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 10% 55%;
+
+    --accent: 270 35% 25%;
+    --accent-foreground: 270 35% 80%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 168 55% 45%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-sm;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--butterfly-lavender)));
+  }
+
+  .gradient-butterfly {
+    background: linear-gradient(135deg, hsl(var(--butterfly-teal)), hsl(var(--butterfly-lavender)), hsl(var(--butterfly-pink)));
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--butterfly-lavender)));
+  }
+}
+
+/* Butterfly animations */
+@keyframes flutter {
+  0%, 100% { transform: rotateY(0deg) translateY(0px); }
+  25% { transform: rotateY(25deg) translateY(-8px); }
+  50% { transform: rotateY(0deg) translateY(-4px); }
+  75% { transform: rotateY(-25deg) translateY(-12px); }
+}
+
+@keyframes fly-away {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(50px, -80px) rotate(-15deg) scale(1.2);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(150px, -200px) rotate(-25deg) scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(300px, -400px) rotate(-35deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.animate-flutter {
+  animation: flutter 2s ease-in-out infinite;
+}
+
+.animate-fly-away {
+  animation: fly-away 2s ease-in forwards;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+}
+
+/* Glitter effect */
+.glitter {
+  position: relative;
+}
+
+.glitter::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, 
+    hsl(var(--butterfly-teal) / 0.3), 
+    hsl(var(--butterfly-lavender) / 0.3), 
+    hsl(var(--butterfly-gold) / 0.3),
+    hsl(var(--butterfly-pink) / 0.3)
+  );
+  border-radius: inherit;
+  filter: blur(8px);
+  z-index: -1;
+  animation: shimmer 3s linear infinite;
+  background-size: 200% auto;
+}
